@@ -8,9 +8,301 @@
 }
 
 body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
   background-color: #c6d6e3;
+  margin-top: 250px;
+
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+}
+
+.profile-section {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0px 10px 24px #a0aab466;
+  margin-bottom: 24px;
+}
+
+/* Секция с фото профиля */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.photo-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f2f5;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.photo-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.upload-btn {
+  background: #486b83;
+  color: white;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+}
+
+.photo-btn:hover {
+  opacity: 0.9;
+  transition: 0.8s ease;
+}
+
+/* Секция с информацией */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #486b83;
+  font-weight: 500;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #486b83;
+  outline: none;
+}
+
+.textarea-field {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Секция с подпиской и прогрессом */
+.subscription-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.subscription-header {
+  color: #486b83;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.courses-list {
+  display: grid;
+  gap: 16px;
+}
+
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.course-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.course-info {
+  flex: 1;
+}
+
+.course-title {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #486b83;
+}
+
+.course-progress {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #486b83;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #486b83;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 740px) {
+  body {
+    margin-top: 290px;
+  }
+
+  .profile-container {
+    width: 100%;
+    padding: 90px 16px 20px 16px;
+  }
+
+  .profile-section {
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .photo-section {
+    padding: 10px 0;
+  }
+
+  .photo-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .photo-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .photo-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .input-group {
+    gap: 6px;
+  }
+
+  .input-field {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 80px 16px 20px 16px;
+  }
+
+  .profile-section {
+    padding: 16px;
+  }
+
+  .photo-container {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.save-button {
+  background: #486b83;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.save-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.save-button:not(:disabled):hover {
+  background: #3a5a6f;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.save-button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: none;
 }
