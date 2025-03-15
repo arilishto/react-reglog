@@ -45,28 +45,20 @@ const Login = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAuthen
         const data = await response.json();
         const { token } = data;
 
-        if (!token) {
-          setMessage('Ошибка: токен не получен');
-          return;
-        }
-
+        // Сохраняем токен в localStorage
         localStorage.setItem('token', token);
+
         setIsAuthenticated(true); 
+        
         navigate('/personal-account');
         setMessage('Успешный вход');
       } else {
-        let errorMessage = 'Ошибка при входе';
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.message || errorMessage;
-        } catch (e) {
-          console.error('Ошибка при парсинге ответа:', e);
-        }
-        setMessage(errorMessage);
+        const errorData = await response.json();
+        setMessage(errorData.message || 'Ошибка при входе');
       }
     } catch (error) {
       console.error('Ошибка соединения:', error);
-      setMessage('Ошибка соединения с сервером. Пожалуйста, проверьте подключение к интернету.');
+      setMessage('Ошибка соединения');
     }
   };
 

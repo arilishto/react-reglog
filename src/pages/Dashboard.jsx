@@ -6,13 +6,7 @@ const Dashboard = () => {
     const [courses, setCourses] = useState([]);
     
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/courses`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/courses`)
             .then((response) => response.json())
             .then((data) => setCourses(data))
             .catch((error) => console.error('Ошибка загрузки курсов:', error));

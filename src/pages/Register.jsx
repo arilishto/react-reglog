@@ -53,28 +53,20 @@ const Register = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAut
         const data = await response.json();
         const { token } = data;
 
-        if (!token) {
-          setMessage('Ошибка: токен не получен');
-          return;
-        }
-
+        // localStorage
         localStorage.setItem('token', token);
+
         setIsAuthenticated(true); 
+
         navigate('/personal-account');
         setMessage('Регистрация успешна');
       } else {
-        let errorMessage = 'Ошибка регистрации';
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.message || errorMessage;
-        } catch (e) {
-          console.error('Ошибка при парсинге ответа:', e);
-        }
-        setMessage(errorMessage);
+        const errorData = await response.json();
+        setMessage(errorData.message || 'Ошибка регистрации');
       }
     } catch (error) {
       console.error('Ошибка соединения:', error);
-      setMessage('Ошибка соединения с сервером. Пожалуйста, проверьте подключение к интернету.');
+      setMessage('Ошибка соединения');
     }
   };
 
