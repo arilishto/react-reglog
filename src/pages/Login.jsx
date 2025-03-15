@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {useNavigate} from "react-router-dom";
+import styles from '../styles/AuthForm.module.css';
 
 const Login = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -63,10 +64,10 @@ const Login = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAuthen
   };
 
   return (
-      <div className="form login">
-        <span className="title">Вход</span>
+      <div>
+        <span className={styles.title}>Вход</span>
         <form onSubmit={handleSubmit}>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type="email"
                 name="email"
@@ -75,49 +76,48 @@ const Login = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAuthen
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-at icon"></i>
+            <i className={`uil uil-at ${styles.icon}`}></i>
           </div>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                className="password"
                 placeholder="Введите пароль"
                 value={formData.password}
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-keyhole-circle icon"></i>
+            <i className={`uil uil-keyhole-circle ${styles.icon}`}></i>
             <i
-                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} showHidePw`}
+                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} ${styles.showHidePw}`}
                 onClick={togglePasswordVisibility}
             ></i>
           </div>
-          <div className="checkbox-text">
-            <div className="checkbox-content">
+          <div className={styles['checkbox-text']}>
+            <div className={styles['checkbox-content']}>
               <input
                   type="checkbox"
                   id="logCheck"
                   checked={rememberMe}
                   onChange={handleCheckboxChange}
               />
-              <label htmlFor="logCheck" className="text">Запомни меня</label>
+              <label htmlFor="logCheck" className={styles.text}>Запомни меня</label>
             </div>
-            <a href="#" className="text">Я забыл(а) пароль!</a>
+            <a href="#" className={styles.text}>Я забыл(а) пароль!</a>
           </div>
-          <div className="input-field button">
+          <div className={`${styles['input-field']} ${styles.button}`}>
             <input type="submit" value="Войти" />
           </div>
         </form>
 
-        {message && <p className="message">{message}</p>}
+        {message && <p className={styles.message}>{message}</p>}
 
-        <div className="login-signup">
-        <span className="text">
-          <button onClick={toggleForm} className="text-button signup-link">
-            Хочу зарегистрироваться!
-          </button>
-        </span>
+        <div className={styles['login-signup']}>
+          <span className={styles.text}>
+            <button onClick={toggleForm} className={styles['text-button']}>
+              Хочу зарегистрироваться!
+            </button>
+          </span>
         </div>
       </div>
   );

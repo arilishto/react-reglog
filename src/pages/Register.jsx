@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {useNavigate} from "react-router-dom";
+import styles from '../styles/AuthForm.module.css';
 
 const Register = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -71,91 +72,87 @@ const Register = ({ toggleForm, togglePasswordVisibility, showPassword, setIsAut
   };
 
   return (
-      <div className="form signup">
-        <span className="title">Регистрация</span>
+      <div>
+        <span className={styles.title}>Регистрация</span>
         <form onSubmit={handleSubmit}>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type="text"
                 name="username"
-                className="username"
                 placeholder="Введите имя пользователя"
                 value={formData.username}
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-user-circle"></i>
+            <i className={`uil uil-user-circle ${styles.icon}`}></i>
           </div>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type="email"
                 name="email"
-                className="email"
                 placeholder="Введите адрес электронной почты"
                 value={formData.email}
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-at icon"></i>
+            <i className={`uil uil-at ${styles.icon}`}></i>
           </div>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                className="password"
                 placeholder="Придумайте пароль..."
                 value={formData.password}
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-lightbulb-alt"></i>
+            <i className={`uil uil-lightbulb-alt ${styles.icon}`}></i>
             <i
-                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} showHidePw`}
+                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} ${styles.showHidePw}`}
                 onClick={togglePasswordVisibility}
             ></i>
           </div>
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
                 type={showPassword ? 'text' : 'password'}
                 name="confirmPassword"
-                className="confirmPassword"
                 placeholder="...и подтвердите его"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
             />
-            <i className="uil uil-keyhole-circle icon"></i>
+            <i className={`uil uil-keyhole-circle ${styles.icon}`}></i>
             <i
-                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} showHidePw`}
+                className={`uil ${showPassword ? 'uil-eye' : 'uil-eye-slash'} ${styles.showHidePw}`}
                 onClick={togglePasswordVisibility}
             ></i>
           </div>
-          <div className="checkbox-text">
-            <div className="checkbox-content">
+          <div className={styles['checkbox-text']}>
+            <div className={styles['checkbox-content']}>
               <input
                   type="checkbox"
                   id="regCheck"
                   checked={rememberMe}
                   onChange={handleCheckboxChange}
               />
-              <label htmlFor="regCheck" className="text">
+              <label htmlFor="regCheck" className={styles.text}>
                 Запомни меня
               </label>
             </div>
           </div>
-          <div className="input-field button">
+          <div className={`${styles['input-field']} ${styles.button}`}>
             <input type="submit" value="Зарегистрироваться" />
           </div>
         </form>
 
-        {message && <p className="message">{message}</p>}
+        {message && <p className={styles.message}>{message}</p>}
 
-        <div className="login-signup">
-        <span className="text">
-          <button onClick={toggleForm} className="text-button login-link">
-            Я уже зарегистрирован(а)!
-          </button>
-        </span>
+        <div className={styles['login-signup']}>
+          <span className={styles.text}>
+            <button onClick={toggleForm} className={styles['text-button']}>
+              Я уже зарегистрирован(а)!
+            </button>
+          </span>
         </div>
       </div>
   );
